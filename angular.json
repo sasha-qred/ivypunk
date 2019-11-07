@@ -109,6 +109,7 @@
   },
   "defaultProject": "ivypunk",
   "cli": {
-    "analytics": "fd618265-9dc2-4250-b66e-588638b7abae"
+    "analytics": "fd618265-9dc2-4250-b66e-588638b7abae",
+    "defaultCollection": "@ngrx/schematics"
   }
 }
