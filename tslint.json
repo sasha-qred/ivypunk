@@ -88,6 +88,8 @@
     "no-host-metadata-property": true,
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,
-    "no-queries-metadata-property": true
+    "no-queries-metadata-property": true,
+
+    "component-selector": [true, "element", ["app", "brew-punk"], "kebab-case"]
   }
 }
