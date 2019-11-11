@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '@env';
@@ -20,6 +21,7 @@ import { AppComponent } from './app.component';
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,9 +4,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { BrewEffects } from './effects';
 import { brewsFeatureKey, reducer } from './reducers';
+import { PunkApiService } from './services';
 
 @NgModule({
   declarations: [],
+  providers: [PunkApiService],
   imports: [
     CommonModule,
     StoreModule.forFeature(brewsFeatureKey, [reducer]),
