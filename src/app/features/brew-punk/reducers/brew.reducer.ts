@@ -9,6 +9,10 @@ export interface State extends EntityState<Brew> {
   // additional entities state properties
 }
 
+export interface FeatureState {
+  [brewsFeatureKey]: State;
+}
+
 export const adapter: EntityAdapter<Brew> = createEntityAdapter<Brew>();
 
 export const initialState: State = adapter.getInitialState({
