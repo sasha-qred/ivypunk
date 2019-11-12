@@ -1,1 +1,1 @@
-export * from './brew-punk.module';
+export * from './brew-punk-routing.module';
