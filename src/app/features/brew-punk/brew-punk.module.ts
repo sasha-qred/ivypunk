@@ -11,7 +11,7 @@ import { PunkApiService } from './services';
   providers: [PunkApiService],
   imports: [
     CommonModule,
-    StoreModule.forFeature(brewsFeatureKey, [reducer]),
+    StoreModule.forFeature(brewsFeatureKey, reducer),
     EffectsModule.forFeature([BrewEffects]),
   ],
 })
