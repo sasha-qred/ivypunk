@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
-import { catchError, concatMap, map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import * as BrewActions from '../actions';
+import { PunkApiService } from '../services';
 
 @Injectable()
 export class BrewEffects {
   public loadBrews$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BrewActions.loadBrews),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
+      switchMap(() =>
+        this.punkApiService.getBeers().pipe(
           map((brews) => BrewActions.loadBrewsSuccess({ brews })),
           catchError((error) => of(BrewActions.loadBrewsFailure({ error }))),
         ),
@@ -19,5 +19,8 @@ export class BrewEffects {
     ),
   );
 
-  constructor(private actions$: Actions) {}
+  constructor(
+    private actions$: Actions,
+    private punkApiService: PunkApiService,
+  ) {}
 }
