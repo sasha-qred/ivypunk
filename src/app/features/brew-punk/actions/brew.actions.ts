@@ -1,8 +1,11 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
-import { Brew } from '../models';
+import { Brew, BrewListFilter } from '../models';
 
-export const loadBrews = createAction('[Brew] Load Brews');
+export const loadBrews = createAction(
+  '[Brew] Load Brews',
+  props<{ brewsFilter?: Partial<BrewListFilter> }>(),
+);
 
 export const loadBrewsSuccess = createAction(
   '[Brew] Load Brews Success',

@@ -10,8 +10,8 @@ export class BrewEffects {
   public loadBrews$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BrewActions.loadBrews),
-      switchMap(() =>
-        this.punkApiService.getBeers().pipe(
+      switchMap((action) =>
+        this.punkApiService.getBeers(1, action.brewsFilter).pipe(
           map((brews) => BrewActions.loadBrewsSuccess({ brews })),
           catchError((error) => of(BrewActions.loadBrewsFailure({ error }))),
         ),
