@@ -12,7 +12,7 @@ export class PunkApiService {
 
   public getBeers(page: number = 1): Observable<Brew[]> {
     return this.http.get<Brew[]>(`${this.url}/beers`, {
-      params: this.stringify({
+      params: this.queryStringify({
         page,
       }),
     });
@@ -26,10 +26,10 @@ export class PunkApiService {
     return this.http.get<Brew[]>(`${this.url}/beers/random`).pipe(pluck(0));
   }
 
-  protected stringify(data: Record<string, any>): Record<string, string> {
+  protected queryStringify(data: Record<string, any>): Record<string, string> {
     return Object.entries(data).reduce<Record<string, string>>(
       (stringified, [key, rawValue]) => {
-        if (rawValue !== null && rawValue !== undefined) {
+        if (rawValue !== null && rawValue !== undefined && rawValue !== '') {
           stringified[key] = String(rawValue);
         }
         return stringified;
