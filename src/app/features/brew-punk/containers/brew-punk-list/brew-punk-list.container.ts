@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as BrewActions from '../../actions';
-import { Brew } from '../../models';
+import { Brew, BrewListFilter } from '../../models';
 import { FeatureState } from '../../reducers';
 import { selectAllBrews } from '../../selectors';
 
@@ -19,6 +19,14 @@ export class BrewPunkListContainer implements OnInit {
   }
 
   public ngOnInit() {
-    this.store.dispatch(BrewActions.loadBrews());
+    this.loadBrews({});
+  }
+
+  public onFilterChange(brewsFilter: Partial<BrewListFilter>) {
+    this.loadBrews(brewsFilter);
+  }
+
+  public loadBrews(brewsFilter: Partial<BrewListFilter>) {
+    this.store.dispatch(BrewActions.loadBrews({ brewsFilter }));
   }
 }
