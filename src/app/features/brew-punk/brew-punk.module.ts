@@ -8,9 +8,12 @@ import { BrewEffects } from './effects';
 import { brewsFeatureKey, reducer } from './reducers';
 import { PunkApiService } from './services';
 
+const COMPONENTS = [BrewPunkListComponent];
+const CONTAINERS = [BrewPunkListContainer];
+
 @NgModule({
-  declarations: [BrewPunkListContainer, BrewPunkListComponent],
-  exports: [BrewPunkListContainer],
+  declarations: [...COMPONENTS, ...CONTAINERS],
+  exports: [...CONTAINERS],
   providers: [PunkApiService],
   imports: [
     CommonModule,
