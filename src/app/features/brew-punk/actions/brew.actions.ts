@@ -4,7 +4,7 @@ import { Brew, BrewListFilter } from '../models';
 
 export const loadBrews = createAction(
   '[Brew] Load Brews',
-  props<{ brewsFilter?: Partial<BrewListFilter> }>(),
+  props<{ brewsFilter?: Partial<BrewListFilter>; page?: number }>(),
 );
 
 export const loadBrewsSuccess = createAction(
