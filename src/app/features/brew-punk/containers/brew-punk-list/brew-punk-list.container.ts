@@ -7,7 +7,7 @@ import { FeatureState } from '../../reducers';
 import { selectAllBrews } from '../../selectors';
 
 @Component({
-  selector: 'brew-punk-list',
+  selector: 'brew-punk-list-container',
   templateUrl: './brew-punk-list.container.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
