@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
-import { Brew } from '../models';
+import { Brew, BrewListFilter } from '../models';
 
 @Injectable()
 export class PunkApiService {
@@ -10,10 +10,14 @@ export class PunkApiService {
 
   constructor(private http: HttpClient) {}
 
-  public getBeers(page: number = 1): Observable<Brew[]> {
+  public getBeers(
+    page: number = 1,
+    brewsFilter?: Partial<BrewListFilter>,
+  ): Observable<Brew[]> {
     return this.http.get<Brew[]>(`${this.url}/beers`, {
       params: this.queryStringify({
         page,
+        ...brewsFilter,
       }),
     });
   }
