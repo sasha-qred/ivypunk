@@ -1,4 +1,5 @@
 <brew-punk-list-filter
+  [filter]="brewsFilter$ | async"
   (filterChange)="onFilterChange($event)"
 ></brew-punk-list-filter>
 <brew-punk-list [brews]="brews$ | async"></brew-punk-list>
