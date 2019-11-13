@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { BrewPunkListComponent } from './components';
 import { BrewPunkListContainer } from './containers';
 import { BrewEffects } from './effects';
 import { brewsFeatureKey, reducer } from './reducers';
 import { PunkApiService } from './services';
 
 @NgModule({
-  declarations: [BrewPunkListContainer],
+  declarations: [BrewPunkListContainer, BrewPunkListComponent],
   exports: [BrewPunkListContainer],
   providers: [PunkApiService],
   imports: [

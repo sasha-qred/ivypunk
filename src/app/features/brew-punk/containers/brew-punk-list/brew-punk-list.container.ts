@@ -21,8 +21,4 @@ export class BrewPunkListContainer implements OnInit {
   public ngOnInit() {
     this.store.dispatch(BrewActions.loadBrews());
   }
-
-  public trackBrewById(index: number, brew: Brew) {
-    return brew.id;
-  }
 }

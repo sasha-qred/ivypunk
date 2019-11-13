@@ -1,0 +1,19 @@
+<ng-template [ngIf]="brews?.length" [ngIfElse]="notFound">
+  <ul>
+    <ng-template
+      ngFor
+      [ngForOf]="brews"
+      [ngForTrackBy]="trackBrewById"
+      let-brew
+    >
+      <li>
+        {{ brew.name }}.
+        <i>{{ brew.tagline }}</i>
+      </li>
+    </ng-template>
+  </ul>
+</ng-template>
+
+<ng-template #notFound>
+  <p>Brews not found</p>
+</ng-template>
