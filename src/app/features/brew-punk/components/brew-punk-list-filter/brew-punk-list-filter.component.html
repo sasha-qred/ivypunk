@@ -1,0 +1,6 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm)">
+  <label>
+    <input formControlName="beer_name" />
+  </label>
+  <button>Filter</button>
+</form>
