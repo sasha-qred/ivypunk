@@ -5,14 +5,22 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
-import { auditTime, map, pluck, shareReplay, takeUntil } from 'rxjs/operators';
+import {
+  auditTime,
+  map,
+  pluck,
+  shareReplay,
+  skip,
+  takeUntil,
+} from 'rxjs/operators';
 import * as BrewActions from '../../actions';
+import { LoadingState } from '../../enums';
 import { Brew, BrewListFilter } from '../../models';
 import { selectBrewFilter } from '../../operators';
 import { FeatureState } from '../../reducers';
-import { selectAllBrews } from '../../selectors';
+import { selectAllBrews, selectBrewLoadingState } from '../../selectors';
 
 @Component({
   selector: 'brew-punk-list-container',
@@ -25,6 +33,7 @@ export class BrewPunkListContainer implements OnInit, OnDestroy {
   public readonly page$: Observable<number>;
   public readonly prevPage$: Observable<number>;
   public readonly nextPage$: Observable<number>;
+  public readonly isBrewsLoaded$: Observable<boolean>;
 
   private readonly destroyEvent$ = new ReplaySubject<true>(1);
 
@@ -37,6 +46,10 @@ export class BrewPunkListContainer implements OnInit, OnDestroy {
     this.brewsFilter$ = this.route.queryParams.pipe(
       selectBrewFilter(),
       shareReplay({ refCount: true }),
+    );
+    this.isBrewsLoaded$ = this.store.pipe(
+      select(selectBrewLoadingState),
+      map((status) => LoadingState.LOADING !== status),
     );
 
     this.page$ = this.route.queryParams.pipe(
@@ -57,7 +70,7 @@ export class BrewPunkListContainer implements OnInit, OnDestroy {
 
   public ngOnInit() {
     combineLatest(this.page$, this.brewsFilter$)
-      .pipe(auditTime(100), takeUntil(this.destroyEvent$))
+      .pipe(skip(1), auditTime(100), takeUntil(this.destroyEvent$))
       .subscribe(([page, brewsFilter]) => {
         this.loadBrews(page, brewsFilter);
       });

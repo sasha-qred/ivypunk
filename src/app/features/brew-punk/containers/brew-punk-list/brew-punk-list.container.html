@@ -1,23 +1,26 @@
-<brew-punk-list-filter
-  [filter]="brewsFilter$ | async"
-  (filterChange)="onFilterChange($event)"
-></brew-punk-list-filter>
-<brew-punk-list [brews]="brews$ | async"></brew-punk-list>
-<ng-template [ngIf]="prevPage$ | async" let-prevPage>
-  <a
-    routerLink="./"
-    [queryParams]="{page: prevPage}"
-    [queryParamsHandling]="true"
-  >
-    Prev
-  </a>
+<ng-template [ngIf]="isBrewsLoaded$ | async" [ngIfElse]="loading">
+  <brew-punk-list-filter
+    [filter]="brewsFilter$ | async"
+    (filterChange)="onFilterChange($event)"
+  ></brew-punk-list-filter>
+  <brew-punk-list [brews]="brews$ | async"></brew-punk-list>
+  <ng-template [ngIf]="prevPage$ | async" let-prevPage>
+    <a
+      routerLink="./"
+      [queryParams]="{page: prevPage}"
+      [queryParamsHandling]="true"
+    >
+      Prev
+    </a>
+  </ng-template>
+  <ng-template [ngIf]="(brews$ | async)?.length">
+    <a
+      routerLink="./"
+      [queryParams]="{page: nextPage$ | async}"
+      [queryParamsHandling]="true"
+    >
+      Next
+    </a>
+  </ng-template>
 </ng-template>
-<ng-template [ngIf]="(brews$ | async)?.length">
-  <a
-    routerLink="./"
-    [queryParams]="{page: nextPage$ | async}"
-    [queryParamsHandling]="true"
-  >
-    Next
-  </a>
-</ng-template>
+<ng-template #loading>Loading...</ng-template>
