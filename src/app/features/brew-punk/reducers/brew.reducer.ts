@@ -1,12 +1,14 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as BrewActions from '../actions';
+import { LoadingState } from '../enums';
 import { Brew } from '../models';
 
 export const brewsFeatureKey = 'brews';
 
 export interface State extends EntityState<Brew> {
   // additional entities state properties
+  loadingState: LoadingState;
 }
 
 export interface FeatureState {
@@ -16,7 +18,7 @@ export interface FeatureState {
 export const adapter: EntityAdapter<Brew> = createEntityAdapter<Brew>();
 
 export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
+  loadingState: LoadingState.BLANK,
 });
 
 const brewReducer = createReducer(
@@ -45,13 +47,28 @@ const brewReducer = createReducer(
   on(BrewActions.deleteBrews, (state, action) =>
     adapter.removeMany(action.ids, state),
   ),
+  on(BrewActions.loadBrews, (state) => ({
+    ...state,
+    loadingState: LoadingState.LOADING,
+  })),
   on(BrewActions.loadBrewsSuccess, (state, action) =>
-    adapter.addAll(action.brews, state),
+    adapter.addAll(action.brews, {
+      ...state,
+      loadingState: LoadingState.LOADED,
+    }),
   ),
-  on(BrewActions.loadBrewsFailure, (state, action) =>
-    adapter.addAll([], state),
+  on(BrewActions.loadBrewsFailure, (state) =>
+    adapter.addAll([], {
+      ...state,
+      loadingState: LoadingState.ERROR,
+    }),
   ),
-  on(BrewActions.clearBrews, (state) => adapter.removeAll(state)),
+  on(BrewActions.clearBrews, (state) =>
+    adapter.removeAll({
+      ...state,
+      loadingState: LoadingState.BLANK,
+    }),
+  ),
 );
 
 export function reducer(state: State | undefined, action: Action) {
