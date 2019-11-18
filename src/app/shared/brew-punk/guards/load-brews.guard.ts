@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import { LoadingState, pickBrewFilter } from '@shared/brew-punk';
 import { merge, Observable, of } from 'rxjs';
 import { delay, filter, first, map } from 'rxjs/operators';
-import * as BrewActions from '../actions';
-import { FeatureState } from '../reducers';
-import { selectBrewLoadingState } from '../selectors';
+import { LoadingState } from '../enums';
+import { pickBrewFilter } from '../helpers';
+import { BrewAbstractSourceService } from '../services';
 
 @Injectable()
 export class LoadBrewsGuard implements CanActivate {
-  constructor(private store$: Store<FeatureState>) {}
+  constructor(private brewSourceService: BrewAbstractSourceService) {}
 
   public canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const page = route.queryParams.page;
     const brewsFilter = pickBrewFilter(route.queryParams);
-    this.store$.dispatch(BrewActions.loadBrews({ page, brewsFilter }));
+    this.brewSourceService.loadBrews(page, brewsFilter);
     return merge(
       of(true).pipe(delay(500)),
-      this.store$.pipe(
-        select(selectBrewLoadingState),
+      this.brewSourceService.brewsState$.pipe(
         filter(
           (status) =>
             status === LoadingState.LOADED || status === LoadingState.ERROR,

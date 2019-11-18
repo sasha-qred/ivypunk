@@ -5,13 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import {
-  Brew,
-  BrewListFilter,
-  LoadingState,
-  selectBrewFilter,
-} from '@shared/brew-punk';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import {
   auditTime,
@@ -21,16 +14,17 @@ import {
   skip,
   takeUntil,
 } from 'rxjs/operators';
-import * as BrewActions from '../../actions';
-import { FeatureState } from '../../reducers';
-import { selectAllBrews, selectBrewLoadingState } from '../../selectors';
+import { LoadingState } from '../../enums';
+import { Brew, BrewListFilter } from '../../models';
+import { selectBrewFilter } from '../../operators';
+import { BrewAbstractSourceService } from '../../services';
 
 @Component({
-  selector: 'ngrx-brew-list-container',
-  templateUrl: './ngrx-brew-list.container.html',
+  selector: 'brew-punk-list-container',
+  templateUrl: './brew-punk-list.container.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgrxBrewListContainer implements OnInit, OnDestroy {
+export class BrewPunkListContainer implements OnInit, OnDestroy {
   public readonly brews$: Observable<Brew[]>;
   public readonly brewsFilter$: Observable<Partial<BrewListFilter>>;
   public readonly page$: Observable<number>;
@@ -41,17 +35,16 @@ export class NgrxBrewListContainer implements OnInit, OnDestroy {
   private readonly destroyEvent$ = new ReplaySubject<true>(1);
 
   constructor(
-    private store: Store<FeatureState>,
     private router: Router,
     private route: ActivatedRoute,
+    private brewSourceService: BrewAbstractSourceService,
   ) {
-    this.brews$ = this.store.select(selectAllBrews);
+    this.brews$ = this.brewSourceService.brews$;
     this.brewsFilter$ = this.route.queryParams.pipe(
       selectBrewFilter(),
       shareReplay({ refCount: true }),
     );
-    this.isBrewsLoaded$ = this.store.pipe(
-      select(selectBrewLoadingState),
+    this.isBrewsLoaded$ = this.brewSourceService.brewsState$.pipe(
       map((status) => LoadingState.LOADING !== status),
     );
 
@@ -90,7 +83,7 @@ export class NgrxBrewListContainer implements OnInit, OnDestroy {
   }
 
   public loadBrews(page: number, brewsFilter: Partial<BrewListFilter>) {
-    this.store.dispatch(BrewActions.loadBrews({ page, brewsFilter }));
+    this.brewSourceService.loadBrews(page, brewsFilter);
   }
 
   public ngOnDestroy() {
