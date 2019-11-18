@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { PunkApiService } from '@shared/brew-punk';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import * as BrewActions from '../actions';
-import { PunkApiService } from '../services';
 
 @Injectable()
 export class BrewEffects {

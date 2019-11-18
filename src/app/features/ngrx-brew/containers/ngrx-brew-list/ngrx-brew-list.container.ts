@@ -6,6 +6,12 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import {
+  Brew,
+  BrewListFilter,
+  LoadingState,
+  selectBrewFilter,
+} from '@shared/brew-punk';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import {
   auditTime,
@@ -16,9 +22,6 @@ import {
   takeUntil,
 } from 'rxjs/operators';
 import * as BrewActions from '../../actions';
-import { LoadingState } from '../../enums';
-import { Brew, BrewListFilter } from '../../models';
-import { selectBrewFilter } from '../../operators';
 import { FeatureState } from '../../reducers';
 import { selectAllBrews, selectBrewLoadingState } from '../../selectors';
 

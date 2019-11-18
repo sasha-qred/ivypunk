@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import { LoadingState, pickBrewFilter } from '@shared/brew-punk';
 import { merge, Observable, of } from 'rxjs';
 import { delay, filter, first, map } from 'rxjs/operators';
 import * as BrewActions from '../actions';
-import { LoadingState } from '../enums';
-import { pickBrewFilter } from '../helpers';
 import { FeatureState } from '../reducers';
 import { selectBrewLoadingState } from '../selectors';
 

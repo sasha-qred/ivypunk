@@ -1,6 +1,6 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
-import { Brew, BrewListFilter } from '../models';
+import { Brew, BrewListFilter } from '@shared/brew-punk';
 
 export const loadBrews = createAction(
   '[Ngrx/Brew] Load Brews',

@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { Brew, BrewListFilter } from '../models';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class PunkApiService {
   private readonly url = 'https://api.punkapi.com/v2';
 
