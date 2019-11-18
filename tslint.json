@@ -90,6 +90,11 @@
     "no-outputs-metadata-property": true,
     "no-queries-metadata-property": true,
 
-    "component-selector": [true, "element", ["app", "brew-punk"], "kebab-case"]
+    "component-selector": [
+      true,
+      "element",
+      ["app", "brew-punk", "helper"],
+      "kebab-case"
+    ]
   }
 }
