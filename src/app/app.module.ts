@@ -5,6 +5,7 @@ import { environment } from '@env';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HelperModule } from '@shared/helper';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
     HttpClientModule,
+    HelperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
