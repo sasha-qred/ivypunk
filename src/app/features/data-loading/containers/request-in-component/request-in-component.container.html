@@ -1,0 +1,4 @@
+<ng-template [ngIf]="brews$ | async" [ngIfElse]="noDataLoaded" let-brews>
+  <brew-punk-list [brews]="brews"></brew-punk-list>
+</ng-template>
+<ng-template #noDataLoaded>No data loaded</ng-template>
