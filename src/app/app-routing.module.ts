@@ -4,8 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'ngrx-brew',
+    pathMatch: 'full',
+  },
+  {
+    path: 'ngrx-brew',
     loadChildren: () =>
-      import('./features/brew-punk').then((m) => m.BrewPunkRoutingModule),
+      import('./features/ngrx-brew').then((m) => m.NgrxBrewRoutingModule),
   },
 ];
 

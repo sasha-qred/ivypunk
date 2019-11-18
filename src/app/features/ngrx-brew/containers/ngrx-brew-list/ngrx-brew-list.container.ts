@@ -23,11 +23,11 @@ import { FeatureState } from '../../reducers';
 import { selectAllBrews, selectBrewLoadingState } from '../../selectors';
 
 @Component({
-  selector: 'brew-punk-list-container',
-  templateUrl: './brew-punk-list.container.html',
+  selector: 'ngrx-brew-list-container',
+  templateUrl: './ngrx-brew-list.container.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BrewPunkListContainer implements OnInit, OnDestroy {
+export class NgrxBrewListContainer implements OnInit, OnDestroy {
   public readonly brews$: Observable<Brew[]>;
   public readonly brewsFilter$: Observable<Partial<BrewListFilter>>;
   public readonly page$: Observable<number>;

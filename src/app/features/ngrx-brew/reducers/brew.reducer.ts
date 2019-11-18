@@ -4,7 +4,7 @@ import * as BrewActions from '../actions';
 import { LoadingState } from '../enums';
 import { Brew } from '../models';
 
-export const brewsFeatureKey = 'brews';
+export const brewsFeatureKey = 'ngrx-brews';
 
 export interface State extends EntityState<Brew> {
   // additional entities state properties

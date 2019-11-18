@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Brew } from '@features/brew-punk/models';
+import { Brew } from '../../models';
 
 @Component({
   selector: 'brew-punk-list',

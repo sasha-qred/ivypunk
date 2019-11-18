@@ -9,7 +9,7 @@ import {
   BrewPunkListFilterComponent,
   BrewPunkListItemComponent,
 } from './components';
-import { BrewPunkListContainer } from './containers';
+import { NgrxBrewListContainer } from './containers';
 import { BrewEffects } from './effects';
 import { brewsFeatureKey, reducer } from './reducers';
 import { PunkApiService } from './services';
@@ -19,7 +19,7 @@ const COMPONENTS = [
   BrewPunkListFilterComponent,
   BrewPunkListItemComponent,
 ];
-const CONTAINERS = [BrewPunkListContainer];
+const CONTAINERS = [NgrxBrewListContainer];
 
 @NgModule({
   declarations: [...COMPONENTS, ...CONTAINERS],
@@ -33,4 +33,4 @@ const CONTAINERS = [BrewPunkListContainer];
     RouterModule,
   ],
 })
-export class BrewPunkModule {}
+export class NgrxBrewModule {}
