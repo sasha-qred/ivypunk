@@ -1,9 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrewPunkModule } from '@shared/brew-punk';
-import { RequestInComponentContainer } from './containers';
+import {
+  RequestInComponentContainer,
+  RequestInResolverContainer,
+  RequestInResolverSnapshotContainer,
+} from './containers';
 
-const CONTAINERS = [RequestInComponentContainer];
+const CONTAINERS = [
+  RequestInComponentContainer,
+  RequestInResolverContainer,
+  RequestInResolverSnapshotContainer,
+];
 
 @NgModule({
   declarations: [...CONTAINERS],
