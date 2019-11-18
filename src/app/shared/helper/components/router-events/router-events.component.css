@@ -1,0 +1,24 @@
+ul {
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+ul::-webkit-scrollbar {
+  display: none;
+}
+
+li {
+  display: inline;
+}
+
+li:not(:last-child)::after {
+  content: ', ';
+  padding-inline-end: 0.25rem;
+}
+
+li:last-child::after {
+  content: '.';
+}

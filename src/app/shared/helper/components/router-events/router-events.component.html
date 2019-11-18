@@ -1,0 +1,10 @@
+<ul>
+  <ng-template
+    ngFor
+    [ngForOf]="eventsHistory$ | async"
+    [ngForTrackBy]="trackByEvent"
+    let-event
+  >
+    <li>{{ event }}</li>
+  </ng-template>
+</ul>
