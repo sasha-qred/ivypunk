@@ -8,6 +8,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'data-loading',
+    loadChildren: () =>
+      import('./features/data-loading').then((m) => m.DataLoadingRoutingModule),
+  },
+  {
     path: 'ngrx-brew',
     loadChildren: () =>
       import('./features/ngrx-brew').then((m) => m.NgrxBrewRoutingModule),

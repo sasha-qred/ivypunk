@@ -93,7 +93,7 @@
     "component-selector": [
       true,
       "element",
-      ["app", "brew-punk", "helper"],
+      ["app", "brew-punk", "helper", "data-loading"],
       "kebab-case"
     ]
   }
