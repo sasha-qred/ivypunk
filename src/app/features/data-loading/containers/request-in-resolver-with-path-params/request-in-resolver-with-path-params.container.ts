@@ -10,7 +10,7 @@ import { pluck } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestInResolverWithPathParamsContainer {
-  public brews$: Observable<Brew[]>;
+  public brews$: Observable<Brew[] | null>;
 
   constructor(public route: ActivatedRoute) {
     this.brews$ = route.data.pipe(pluck('brews'));

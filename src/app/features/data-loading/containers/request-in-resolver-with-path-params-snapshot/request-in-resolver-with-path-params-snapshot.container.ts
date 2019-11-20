@@ -8,7 +8,7 @@ import { Brew } from '@shared/brew-punk';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestInResolverWithPathParamsSnapshotContainer {
-  public brewsSnapshot: Brew[];
+  public brewsSnapshot: Brew[] | null;
 
   constructor(public route: ActivatedRoute) {
     this.brewsSnapshot = route.snapshot.data.brews;
