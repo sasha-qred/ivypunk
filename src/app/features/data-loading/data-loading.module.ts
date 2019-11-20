@@ -10,6 +10,7 @@ import {
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsSnapshotContainer,
 } from './containers';
 
 const CONTAINERS = [
@@ -20,6 +21,7 @@ const CONTAINERS = [
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsSnapshotContainer,
 ];
 
 @NgModule({

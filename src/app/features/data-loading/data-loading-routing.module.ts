@@ -8,9 +8,10 @@ import {
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsSnapshotContainer,
 } from './containers';
 import { DataLoadingModule } from './data-loading.module';
-import { LoadBrewsResolver } from './resolvers';
+import { LoadBrewsResolver, LoadBrewsWithPageResolver } from './resolvers';
 
 const routes: Routes = [
   {
@@ -52,11 +53,18 @@ const routes: Routes = [
       brews: LoadBrewsResolver,
     },
   },
+  {
+    path: 'request-in-resolver-with-params-snapshot/:page',
+    component: RequestInResolverWithPathParamsSnapshotContainer,
+    resolve: {
+      brews: LoadBrewsWithPageResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), DataLoadingModule],
-  providers: [LoadBrewsResolver],
+  providers: [LoadBrewsResolver, LoadBrewsWithPageResolver],
   exports: [RouterModule],
 })
 export class DataLoadingRoutingModule {}

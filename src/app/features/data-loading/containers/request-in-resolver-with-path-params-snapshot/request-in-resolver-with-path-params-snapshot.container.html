@@ -1,0 +1,24 @@
+<a routerLink="/data-loading/request-in-resolver-with-params-snapshot/1">
+  1
+</a>
+,
+<a routerLink="/data-loading/request-in-resolver-with-params-snapshot/2">
+  2
+</a>
+,
+<a routerLink="/data-loading/request-in-resolver-with-params-snapshot/3">
+  3
+</a>
+<br />
+<div class="flex-half">
+  <div>
+    brewsSnapshot:
+    <br />
+    <brew-punk-list [brews]="brewsSnapshot"></brew-punk-list>
+  </div>
+  <div>
+    route.snapshot.data.brews:
+    <br />
+    <brew-punk-list [brews]="route.snapshot.data.brews"></brew-punk-list>
+  </div>
+</div>
