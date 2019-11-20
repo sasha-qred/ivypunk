@@ -1,0 +1,24 @@
+<a
+  routerLink="/data-loading/request-in-component-with-path-params/1"
+  queryParamsHandling="merge"
+>
+  1
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-component-with-path-params/2"
+  queryParamsHandling="merge"
+>
+  2
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-component-with-path-params/3"
+  queryParamsHandling="merge"
+>
+  3
+</a>
+<br />
+params$: {{ params$ | async | json }}
+<br />
+<brew-punk-list [brews]="brews$ | async"></brew-punk-list>
