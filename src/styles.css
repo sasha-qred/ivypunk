@@ -7,3 +7,11 @@
 * {
   font-size: inherit;
 }
+
+.flex-half {
+  display: flex;
+}
+
+.flex-half > * {
+  flex: 1 0 50%;
+}
