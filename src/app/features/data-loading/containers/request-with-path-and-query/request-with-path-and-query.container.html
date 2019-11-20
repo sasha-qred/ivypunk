@@ -1,0 +1,33 @@
+<a
+  routerLink="/data-loading/request-in-with-path-and-query/1"
+  queryParamsHandling="merge"
+>
+  1
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-with-path-and-query/2"
+  queryParamsHandling="merge"
+>
+  2
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-with-path-and-query/3"
+  queryParamsHandling="merge"
+>
+  3
+</a>
+<br />
+<a routerLink="./" [queryParams]="{ a: 1 }" queryParamsHandling="merge">a1</a>
+,
+<a routerLink="./" [queryParams]="{ a: 2 }" queryParamsHandling="merge">a2</a>
+,
+<a routerLink="./" [queryParams]="{ a: 3 }" queryParamsHandling="merge">a3</a>
+<br />
+<br />
+<brew-punk-list-filter
+  [filter]="filter$ | async"
+  (filterChange)="onFilterChange($event)"
+></brew-punk-list-filter>
+<brew-punk-list [brews]="brews$ | async"></brew-punk-list>

@@ -11,10 +11,12 @@ import {
   RequestInResolverWithPathParamsContainer,
   RequestInResolverWithPathParamsSnapshotContainer,
   RequestInResolverWithQueryContainer,
+  RequestWithPathAndQueryContainer,
 } from './containers';
 import { DataLoadingModule } from './data-loading.module';
 import {
   LoadBrewsResolver,
+  LoadBrewsWithPageAndQueryResolver,
   LoadBrewsWithPageResolver,
   LoadBrewsWithQueryResolver,
 } from './resolvers';
@@ -88,12 +90,20 @@ const routes: Routes = [
     },
     runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
   },
+  {
+    path: 'request-in-with-path-and-query/:page',
+    component: RequestWithPathAndQueryContainer,
+    resolve: {
+      brews: LoadBrewsWithPageAndQueryResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), DataLoadingModule],
   providers: [
     LoadBrewsResolver,
+    LoadBrewsWithPageAndQueryResolver,
     LoadBrewsWithPageResolver,
     LoadBrewsWithQueryResolver,
   ],

@@ -8,3 +8,4 @@ export * from './request-in-resolver-snapshot';
 export * from './request-in-resolver-with-path-params';
 export * from './request-in-resolver-with-path-params-snapshot';
 export * from './request-in-resolver-with-query';
+export * from './request-with-path-and-query';
