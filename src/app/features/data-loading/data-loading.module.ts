@@ -10,6 +10,7 @@ import {
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsContainer,
   RequestInResolverWithPathParamsSnapshotContainer,
 } from './containers';
 
@@ -21,6 +22,7 @@ const CONTAINERS = [
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsContainer,
   RequestInResolverWithPathParamsSnapshotContainer,
 ];
 

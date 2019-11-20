@@ -8,6 +8,7 @@ import {
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
+  RequestInResolverWithPathParamsContainer,
   RequestInResolverWithPathParamsSnapshotContainer,
 } from './containers';
 import { DataLoadingModule } from './data-loading.module';
@@ -51,6 +52,13 @@ const routes: Routes = [
     component: RequestInResolverSnapshotContainer,
     resolve: {
       brews: LoadBrewsResolver,
+    },
+  },
+  {
+    path: 'request-in-resolver-with-params/:page',
+    component: RequestInResolverWithPathParamsContainer,
+    resolve: {
+      brews: LoadBrewsWithPageResolver,
     },
   },
   {
