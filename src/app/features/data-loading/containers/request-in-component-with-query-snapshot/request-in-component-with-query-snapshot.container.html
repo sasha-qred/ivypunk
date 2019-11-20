@@ -1,0 +1,19 @@
+<a routerLink="./" [queryParams]="{ a: 1 }">1</a>
+,
+<a routerLink="./" [queryParams]="{ b: 2 }">2</a>
+,
+<a routerLink="./" [queryParams]="{ c: 3 }">3</a>
+<br />
+snapshot: {{ querySnapshot | json }}
+<brew-punk-list-filter
+  [filter]="querySnapshot"
+  (filterChange)="onFilterChange($event)"
+></brew-punk-list-filter>
+<br />
+route.snapshot.queryParams: {{ route.snapshot.queryParams | json }}
+<brew-punk-list-filter
+  [filter]="route.snapshot.queryParams"
+  (filterChange)="onFilterChange($event)"
+></brew-punk-list-filter>
+<br />
+<brew-punk-list [brews]="brews$ | async"></brew-punk-list>

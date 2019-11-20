@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   RequestInComponentContainer,
+  RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
   RequestInResolverSnapshotContainer,
 } from './containers';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'request-in-component',
     component: RequestInComponentContainer,
+  },
+  {
+    path: 'request-in-component-with-query-snapshot',
+    component: RequestInComponentWithQuerySnapshotContainer,
   },
   {
     path: 'request-in-resolver',
