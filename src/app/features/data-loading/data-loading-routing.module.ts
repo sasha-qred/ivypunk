@@ -10,9 +10,14 @@ import {
   RequestInResolverSnapshotContainer,
   RequestInResolverWithPathParamsContainer,
   RequestInResolverWithPathParamsSnapshotContainer,
+  RequestInResolverWithQueryContainer,
 } from './containers';
 import { DataLoadingModule } from './data-loading.module';
-import { LoadBrewsResolver, LoadBrewsWithPageResolver } from './resolvers';
+import {
+  LoadBrewsResolver,
+  LoadBrewsWithPageResolver,
+  LoadBrewsWithQueryResolver,
+} from './resolvers';
 
 const routes: Routes = [
   {
@@ -68,11 +73,30 @@ const routes: Routes = [
       brews: LoadBrewsWithPageResolver,
     },
   },
+  {
+    path: 'request-in-resolver-with-query',
+    component: RequestInResolverWithQueryContainer,
+    resolve: {
+      brews: LoadBrewsWithQueryResolver,
+    },
+  },
+  {
+    path: 'request-in-resolver-with-query-change',
+    component: RequestInResolverWithQueryContainer,
+    resolve: {
+      brews: LoadBrewsWithQueryResolver,
+    },
+    runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), DataLoadingModule],
-  providers: [LoadBrewsResolver, LoadBrewsWithPageResolver],
+  providers: [
+    LoadBrewsResolver,
+    LoadBrewsWithPageResolver,
+    LoadBrewsWithQueryResolver,
+  ],
   exports: [RouterModule],
 })
 export class DataLoadingRoutingModule {}

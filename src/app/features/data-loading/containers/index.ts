@@ -7,3 +7,4 @@ export * from './request-in-resolver';
 export * from './request-in-resolver-snapshot';
 export * from './request-in-resolver-with-path-params';
 export * from './request-in-resolver-with-path-params-snapshot';
+export * from './request-in-resolver-with-query';

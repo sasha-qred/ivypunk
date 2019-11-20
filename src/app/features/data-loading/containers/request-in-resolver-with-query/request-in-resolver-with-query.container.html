@@ -1,0 +1,14 @@
+<a routerLink="./" [queryParams]="{ a: 1 }">1</a>
+,
+<a routerLink="./" [queryParams]="{ b: 2 }">2</a>
+,
+<a routerLink="./" [queryParams]="{ c: 3 }">3</a>
+<br />
+{{query$ | async | json}}
+<br />
+<brew-punk-list-filter
+  [filter]="filter$ | async"
+  (filterChange)="onFilterChange($event)"
+></brew-punk-list-filter>
+<br />
+<brew-punk-list [brews]="brews$ | async"></brew-punk-list>
