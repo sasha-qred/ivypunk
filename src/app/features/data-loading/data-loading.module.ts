@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrewPunkModule } from '@shared/brew-punk';
 import {
   RequestInComponentContainer,
+  RequestInComponentWithPathParamsSnapshotContainer,
   RequestInComponentWithQueryContainer,
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,
@@ -12,6 +13,7 @@ import {
 
 const CONTAINERS = [
   RequestInComponentContainer,
+  RequestInComponentWithPathParamsSnapshotContainer,
   RequestInComponentWithQueryContainer,
   RequestInComponentWithQuerySnapshotContainer,
   RequestInResolverContainer,

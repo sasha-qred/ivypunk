@@ -1,0 +1,26 @@
+<a
+  routerLink="/data-loading/request-in-component-with-path-params-snapshot/1"
+  queryParamsHandling="merge"
+>
+  1
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-component-with-path-params-snapshot/2"
+  queryParamsHandling="merge"
+>
+  2
+</a>
+,
+<a
+  routerLink="/data-loading/request-in-component-with-path-params-snapshot/3"
+  queryParamsHandling="merge"
+>
+  3
+</a>
+<br />
+paramsSnapshot: {{ paramsSnapshot | json }}
+<br />
+route.snapshot.params: {{ route.snapshot.params | json }}
+<br />
+<brew-punk-list [brews]="brews$ | async"></brew-punk-list>
