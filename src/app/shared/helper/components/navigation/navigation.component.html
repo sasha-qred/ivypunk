@@ -1,0 +1,10 @@
+<button type="button" (click)="toggleNav()">Navigation</button>
+<nav [ngClass]="{ 'visually-hidden': isNavClosed }">
+  <ul>
+    <ng-template ngFor [ngForOf]="links" [ngForTrackBy]="trackByUrl" let-link>
+      <li>
+        <a [routerLink]="link.url">{{ link.label }}</a>
+      </li>
+    </ng-template>
+  </ul>
+</nav>

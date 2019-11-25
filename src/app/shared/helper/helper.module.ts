@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterEventsComponent } from './components';
+import { RouterModule } from '@angular/router';
+import { NavigationComponent, RouterEventsComponent } from './components';
 
-const COMPONENTS = [RouterEventsComponent];
+const COMPONENTS = [NavigationComponent, RouterEventsComponent];
 
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export class HelperModule {}
