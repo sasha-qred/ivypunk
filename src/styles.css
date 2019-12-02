@@ -8,6 +8,10 @@
   font-size: inherit;
 }
 
+a {
+  color: inherit;
+}
+
 .flex-half {
   display: flex;
 }
