@@ -16,7 +16,7 @@
   flex: 1 0 50%;
 }
 
-.visually-hidden {
+.visually-hidden:not(:focus-within) {
   position: absolute !important;
   overflow: hidden;
   width: 1px;
