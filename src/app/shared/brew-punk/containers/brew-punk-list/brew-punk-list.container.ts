@@ -67,6 +67,7 @@ export class BrewPunkListContainer implements OnInit, OnDestroy {
   public ngOnInit() {
     combineLatest(this.page$, this.brewsFilter$)
       .pipe(skip(1), auditTime(100), takeUntil(this.destroyEvent$))
+      // tslint:disable-next-line: rxjs-prefer-angular-async-pipe
       .subscribe(([page, brewsFilter]) => {
         this.loadBrews(page, brewsFilter);
       });
